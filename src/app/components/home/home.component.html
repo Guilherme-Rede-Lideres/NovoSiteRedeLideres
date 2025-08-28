@@ -1,0 +1,30 @@
+  <section class="scroll-video">
+      <div class="frame">
+        <video class="video-desktop" id="heroVideoDesktop" src="../../../assets/RedeLidereVideoDesktop.mp4" playsinline muted autoplay  (ended)="onVideoEnd()" ></video>
+        <video  class="video-mobile" id="heroVideoMobile" src="../../../assets/RedeLideresVideoMobile.mp4" playsinline muted autoplay  (ended)="onVideoEnd()" ></video>
+          <div id="blackOverlay" [ngClass]="{ 'active': videoEnded }">
+          </div>
+      </div>
+<ng-container *ngIf="videoEnded">
+    <canvas id="bubbleCanvas"></canvas>
+    <div class="intro-content">
+      <img src="../../../assets/rede_logotipo-branco.png" alt="Logo Rede" class="intro-logo">
+      <h1 class="intro-title">NOSSO PROPÓSITO:</h1>
+      <p class="intro-text">
+        REVOLUCIONAR O UNIVERSO B2B DE TECNOLOGIA POR UM BRASIL MAIS DIGITAL E INCLUSIVO
+      </p>
+      <button class="intro-button" (click)="scrollToSection('about')">SAIBA MAIS</button>
+    </div>
+  </ng-container>
+      <div class="scroll-hint" aria-hidden="true">
+        <div class="mouse"></div>
+        <span>Role para ver</span>
+      </div>
+  </section>
+<app-numeros></app-numeros>
+<app-artigos></app-artigos>
+
+
+
+
+

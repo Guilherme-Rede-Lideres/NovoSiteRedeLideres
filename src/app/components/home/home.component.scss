@@ -1,0 +1,173 @@
+ .scroll-video{
+      height:100vh;
+      position:relative;
+    }
+    .frame{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      overflow:hidden;
+      background:#000;
+    }
+    .frame video{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      transform: translateY(0) scale(1);
+      will-change: transform;
+    }
+
+    .scroll-hint{
+      position:absolute; left:0; right:0; bottom:32px;
+      display:flex; justify-content:center; gap:10px; align-items:center;
+      color:var(--muted); font-size:14px; letter-spacing:.02em;
+      text-transform:uppercase;
+      opacity:.8;
+      pointer-events:none;
+    }
+    .mouse{width:18px;height:28px;border:2px solid var(--muted);border-radius:12px; position:relative}
+    .mouse::after{content:"";position:absolute;top:6px;left:50%;width:2px;height:6px;background:var(--muted);border-radius:2px;transform:translateX(-50%);animation:scroll 1.4s infinite}
+    @keyframes scroll{0%{opacity:1;transform:translate(-50%,0)}100%{opacity:0;transform:translate(-50%,8px)}}
+
+.video-desktop {
+  display: block !important;
+}
+
+.video-mobile {
+  display: none !important;
+}
+/* Overlay preto */
+#blackOverlay {
+  position: absolute;
+  inset: 0;
+  background: black;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 1s ease; /* tempo do fade */
+}
+#blackOverlay.active {
+  opacity: 1;
+}
+
+
+@media (max-width: 768px) {
+  .video-desktop {
+    display: none !important;
+  }
+  .video-mobile {
+    display: block !important;
+  }
+
+  
+.intro-logo {
+  width: 300px; 
+  margin-bottom: 30px;
+}
+}
+
+
+.intro-texts {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  z-index: 2; /* acima do overlay */
+  padding: 0 20px;
+  opacity: 0;
+  animation: fadeIn 1.5s forwards;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+.intro {
+  position: relative;
+  z-index: 1;
+  height: 100vh;
+  background: black;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 20px;
+}
+.intro-title {
+  font-size: 3rem;
+  margin-bottom: 20px;
+font-family: 'Rede-Bold', sans-serif;
+}
+.intro-subtitle {
+  font-size: 2rem;
+  margin-top: 30px;
+}
+.intro-text {
+  font-size: 1.2rem;
+  margin: 10px 0;
+  max-width: 800px;
+}
+
+
+.intro-section {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  background: #000;
+  overflow: hidden;
+}
+
+
+#bubbleCanvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.intro-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  text-align: center;
+  padding: 0 20px;
+  color: white;
+}
+
+
+.intro-logo {
+  width: 600px; 
+  margin-bottom: 30px;
+}
+
+.intro-text {
+  font-size: 1.2rem;
+  max-width: 700px;
+  margin-bottom: 30px;
+}
+.intro-button {
+  padding: 12px 30px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  background: #001f3f00;
+  border: 1px solid #00ffff;
+  color: white;
+  border-radius: 5px;
+  transition: transform 0.2s;
+}
+.intro-button:hover {
+  transform: scale(1.05);
+}
+

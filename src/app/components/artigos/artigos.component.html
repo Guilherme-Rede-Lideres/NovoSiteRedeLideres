@@ -1,0 +1,76 @@
+<section class="articles-section">
+  <div class="container">
+    <!-- Header da seção -->
+    <div class="section-header">
+      <h2 class="section-title">Artigos de nossos Lideres</h2>
+      <p class="section-subtitle">Conteúdos exclusivos sobre tecnologia, design e negócios</p>
+    </div>
+
+    <!-- Filtros de categoria -->
+    <div class="filters">
+ <button
+  *ngFor="let category of categories"
+  class="filter-btn"
+  [class.active]="selectedCategory === category"
+  (click)="onCategoryChange(category)"
+>
+  {{ category | titlecase }}
+</button>
+    </div>
+
+    <!-- Grid de artigos -->
+    <div class="articles-grid">
+      <article
+        *ngFor="let article of filteredArticles; trackBy: trackByArticleId"
+        class="article-card"
+        [class.visible]="article.isVisible"
+        #articleCard
+      >
+        <!-- Imagem do artigo -->
+        <div class="article-image">
+          <img [src]="article.imageUrl" [alt]="article.title" />
+          <div class="category-tag">{{ article.category | titlecase }}</div>
+        </div>
+
+        <!-- Conteúdo do artigo -->
+        <div class="article-content">
+          <!-- Meta informações -->
+          <div class="article-meta">
+            <span class="author">{{ article.author }}</span>
+            <span class="date">{{ formatDate(article.publishDate) }}</span>
+            <span class="read-time">{{ article.readTime }} min de leitura</span>
+          </div>
+
+          <!-- Título -->
+          <h3 class="article-title">{{ article.title }}</h3>
+
+          <!-- Excerpt -->
+          <p class="article-excerpt">{{ article.excerpt }}</p>
+
+          <!-- Tags -->
+          <div class="article-tags">
+            <span class="tag" *ngFor="let tag of article.tags">{{ tag }}</span>
+          </div>
+
+          <!-- Botão de leitura -->
+          <button class="read-more-btn" (click)="onReadMore(article)">
+            Ler mais
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </button>
+        </div>
+      </article>
+    </div>
+
+    <!-- Botão para ver mais artigos -->
+    <div class="section-footer">
+      <button class="view-all-btn">
+        Ver todos os artigos
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</section>
